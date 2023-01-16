@@ -20,7 +20,7 @@ const Budget = () => {
          
         
         if (val>20000){
-            alert ("You exceed maximum budget allowed");
+            alert ("You exceed maximum budget allowed 20,000");
         } else {
             dispatch ({
                 type: 'SET_BUDGET',

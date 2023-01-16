@@ -1,36 +1,28 @@
-import React, {useContext, useState} from 'react';
-import {AppContext} from '../context/AppContext';
+import React, { useContext } from 'react';
+import { AppContext } from '../context/AppContext';
 
- const Currency = (props) => {
-     const [currency,setCurrency] =useState('');
-     const {dispatch}= useContext (AppContext);
+const Currency = () => {
+  const {dispatch } = useContext(AppContext);
 
-     const changeCurrency = (event)=>{
-         dispatch ({
-             type: 'CHG_CURRENCY',
-             payload:event.target.value,
-         });
-        setCurrency(event.target.value);
-        return;
-     }
+	const changeCurrency = (val)=>{
+			dispatch({
+				type: 'CHG_CURRENCY',
+				payload: val,
+			})
+	}
+	
 
-     return (
+  return (
+		<div className='btn btn-success'> Currency ({
+      <select name="currency" id="currency" style={{background:'green',color:'white'}} onChange={(event)=>changeCurrency(event.target.value)}>
+        <option value="£">£ Pounds</option>
+        <option value="$">$ Dollar</option>
+        <option value="€">€ Euro</option>
+        <option value="₹">₹ Ruppee</option>
+      </select>	
+      })	
+    </div>
+	);
+};
 
-        <div>
-            
-             <select className= " btn btn-success dropdown-toggle" id="currency" style={{backgroundcolor:'light green', color:'white'}} onChange= {(event)=>changeCurrency(event)}>Currency {currency}
-                 <option defaultValue={currency} >Currency ({currency}) </option> 
-                 <option value="£">£ Pound </option>
-                 <option value="$">$ Dollar</option>
-                 <option value="€">€ Euro</option>
-                 <option value="₹">₹ Rupee</option>
-                
-             </select>
-            
-             </div>
-      
-         
-     );
- };
-
- export default Currency;
+export default Currency;
